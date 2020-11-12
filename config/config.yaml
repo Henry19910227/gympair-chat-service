@@ -1,0 +1,32 @@
+Server:
+  RunMode: debug
+  HttpPort: 9090
+  ReadTimeout: 60
+  WriteTimeout: 60
+App:
+  LogFilePath: .
+  LogFileName: app
+  LogFileExt: log
+Log:
+  FileName: app
+  FileExt: log
+  Debug:
+    Path: .
+  Release:
+    Path: .
+Database:
+  DBType: mysql
+  Debug:
+    Host: 127.0.0.1:3306
+    DBName: chat
+    UserName: root
+    Password: 123456
+  Release:
+    Host: gympair-user-mysql:3306
+    DBName: chat
+    UserName: root
+    Password: 123456
+JWT:
+  Secret: henry
+  Issuer: gympair
+  Expire: 1 #hour
