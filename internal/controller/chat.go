@@ -2,6 +2,7 @@ package controller
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,10 +14,23 @@ type ChatController struct {
 // NewChatController ...
 func NewChatController(router *gin.Engine) {
 	chatController := &ChatController{}
-	router.GET("/test", chatController.Test)
+	router.POST("/publish", chatController.Publish)
+	router.POST("/connect", chatController.Connect)
 }
 
-// Test ...
-func (chatVC *ChatController) Test(c *gin.Context) {
-	fmt.Println("Test!!!!!")
+// Publish ...
+func (chatVC *ChatController) Publish(c *gin.Context) {
+	var body map[string]interface{}
+	c.ShouldBindJSON(&body)
+	fmt.Println(body)
+	c.JSON(http.StatusOK, gin.H{"result": gin.H{}})
+}
+
+// Connect ...
+func (chatVC *ChatController) Connect(c *gin.Context) {
+	fmt.Println("Connect!!!!!!")
+	var body map[string]interface{}
+	c.ShouldBindJSON(&body)
+	fmt.Println(body)
+	c.JSON(http.StatusOK, gin.H{"result": gin.H{}})
 }
